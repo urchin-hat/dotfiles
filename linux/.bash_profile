@@ -11,12 +11,12 @@ HISTSIZE=1000
 export HISTIGNORE="fg*:bg*:history*:cd*:hs*"
 
 # config
-export EDITOR="emacs"
+export EDITOR="emacs -nw"
 
 # alias
-alias e='emacs'
-alias em='emacs'
-alias emcas='emacs'
+alias emacs='emacs -nw'
+alias e='emacs -nw'
+alias em='emacs -nw'
 alias pip_all='pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U'
 alias sbp='exec $SHELL -l'
 alias gb='git branch'
