@@ -30,7 +30,7 @@ fi
 
 # 2 common
 ## GNU Emacs
-[ ! -e $HOME/.emacs.d ] && which emacs > /dev/null 2>&1 && ln -sf `pwd`/common/.emacs.d/ $HOME/.emacs.d/
+[ ! -e $HOME/.emacs.d ] && which emacs > /dev/null && ln -sf `pwd`/common/.emacs.d/ $HOME/
 
 ## vim
 [ ! -e $HOME/.vimrc ] && which vim > /dev/null 2>&1 && ln -sf  `pwd`/common/.vimrc $HOME/.vimrc
@@ -38,6 +38,7 @@ fi
 # 3 OS (.bash_profile)
 ## 3.1 Linux
 if [ `uname` = "Linux" ]; then
+    ln -sf `pwd`/linux/.bash_profile $HOME/.bash_profile
     echo "Linux"
 
 ## 3.2 Mac OS X
