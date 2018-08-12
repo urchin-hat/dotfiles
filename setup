@@ -2,20 +2,38 @@
 
 # 1 initial setting
 if [ $# -eq 1 ]; then
+    # 1.1 show help
     if [ $1 = "-h" -o $1 = "help" ]; then
         echo "help"
         ## help description
         exit 0
+    # 1.2 initial setting
+    elif [$1 = "-i" ]; then
+	     ## 1.2.1 Linux initial setting
+	     if [ `uname` = "Linux" ]; then
+	         ### TODO shellscript how to sudo command
+		 #### initial
+		 sudo apt install -y gcc gcc-c++ make git openssl-devel bzip2-devel zlib-devel readline-devel sqlite-devel zlib1g-dev
+
+	     ## 1.2.2 Mac OS X initial setting
+	     elif [ `uname` = "Darwin" ]; then
+		 ### HomeBrew
+		 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+		 ### Git
+		 brew install git
+	     fi
+	     # common initial setting
+	     ## anyenv
+	     git clone https://github.com/riywo/anyenv ~/.anyenv
     fi
-  # exit 1
 fi
 
 # 2 common
 ## GNU Emacs
-[ ! -e $HOME/.emacs.d ] && which emacs > /dev/null && ln -sf `pwd`/common/.emacs.d/ $HOME/.emacs.d/
+[ ! -e $HOME/.emacs.d ] && which emacs > /dev/null 2>&1 && ln -sf `pwd`/common/.emacs.d/ $HOME/.emacs.d/
 
 ## vim
-[ ! -e $HOME/.vimrc ] && which vim > /dev/null && ln -sf  `pwd`/common/.vimrc $HOME/.vimrc
+[ ! -e $HOME/.vimrc ] && which vim > /dev/null 2>&1 && ln -sf  `pwd`/common/.vimrc $HOME/.vimrc
 
 # 3 OS (.bash_profile)
 ## 3.1 Linux
