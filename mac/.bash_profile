@@ -17,7 +17,6 @@ alias emacs='/usr/local/bin/emacs -nw'
 alias e='emacs'
 alias em='emacs'
 alias emcas='emacs'
-alias brew="env PATH=${PATH/\/Users\/sfukushima\/\.pyenv\/shims:/} brew"
 alias pip_all='pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U'
 alias sbp='source ~/.bash_profile'
 alias gb='git branch'
