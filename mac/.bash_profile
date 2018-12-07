@@ -13,12 +13,12 @@ export HISTIGNORE="fg*:bg*:history*:cd*:hs*"
 export EDITOR="emacs"
 
 # alias
+## bash alias
+alias sbp='source ~/.bash_profile'
 alias emacs='/usr/local/bin/emacs -nw'
 alias e='emacs'
 alias em='emacs'
 alias emcas='emacs'
-alias pip_all='pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U'
-alias sbp='source ~/.bash_profile'
 alias gb='git branch'
 alias gc='git checkout'
 alias ls='ls -G'
@@ -28,16 +28,19 @@ alias cl='clear'
 alias grep='grep --color'
 alias fgrep='fgrep --color'
 alias df='df -h'
-alias host_name='ssh -i ~/.ssh/id_rsa -p 22 -l hoge example.com'
 alias loghttpd='cd /var/log/httpd/$(date +%Y)/$(date +%m)/$(date +%d)/'
 alias vi='vim'
 alias his='history'
-alias csp='mcs'
 alias hs='history | fgrep $1'
+
+## Python's alias
+alias pip_all='pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U'
 alias py='python'
 alias venv='virtualenv'
+alias activate='source env/bin/activate'
 alias jn='jupyter notebook'
-alias atv='source env/bin/activate'
+
+## node.js alias
 alias ts='tsc --target es6'
 
 # homebrew
@@ -47,7 +50,7 @@ export PATH=:"/usr/local/bin:$PATH"
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
-# ndenv
+## ndenv
 eval "$(ndenv init -)"
 
 # python
