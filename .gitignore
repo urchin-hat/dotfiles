@@ -12,6 +12,7 @@
 
 ## config
 !config/
+!config/.gitkeep
 
 ## emacs
 !.emacs.d/
@@ -20,5 +21,6 @@
 
 ## requirement
 !requirement/
+!requirement/.gitkeep
 !requirement/linux_brew.txt
 !requirement/mac_brew.txt
