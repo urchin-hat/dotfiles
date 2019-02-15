@@ -16,9 +16,19 @@ if !(type brew > /dev/null 2>&1); then echo -e "We recommend installing Homebrew
 # SetUp
 ##################################################
 if [ ! -e `pwd`/config/my_conf ]; then echo -e "#!/bin/bash" > `pwd`/config/my_conf; fi
+if [ ! -e `pwd`/config/user_info ]; then
+    echo -e "#!/bin/bash" > `pwd`/config/user_info
+    echo -e "export GITHUB_USER=''" >> `pwd`/config/user_info
+    echo -e "export GITHUB_MAIL=''" >> `pwd`/config/user_info
+fi
+if [ ! -e $HOME/.my_config ]; then
+    ln -sf `pwd`/config $HOME/.my_config
+    source $HOME/.my_config/user_info
+fi
+
 if [ ! -e $HOME/.bash_profile ];then ln -sf `pwd`/.bash_profile $HOME/.bash_profile && source $HOME/.bash_profile; fi
 if [ -z $GITHUB_USER ] || [ -z $GITHUB_MAIL ]; then
-    echo -e '\e[1;31m!!! Please input GITHUB_USER/GITHUB_MAIL !!!\e[m' && exit
+    echo -e '\e[1;31m!!! Please input GITHUB_USER/GITHUB_MAIL(.my_conf/user_info) !!!\e[m' && exit
 else
     git config --global user.name $GITHUB_USER
     git config --global user.email $GITHUB_MAIL

@@ -6,9 +6,10 @@
 # 1. Environment variable
 ##################################################
 ## GitHub
-export GITHUB_USER=''
-export GITHUB_MAIL=''
-if [ -z $GITHUB_USER ] || [ -z $GITHUB_MAIL ]; then echo -e '\e[1;31m!!! Please input GITHUB_USER/GITHUB_MAIL !!!\e[m'; fi
+source .my_config/user_info 2> /dev/null
+if [ -z $GITHUB_USER ] || [ -z $GITHUB_MAIL ]; then
+    echo -e '\e[1;31m!!! Please input GITHUB_USER/GITHUB_MAIL(.my_config/user_info) !!!\e[m'
+fi
 
 ## Common Config
 export EDITOR="emacs -nw"
