@@ -6,8 +6,8 @@
 # 1. Environment variable
 ##################################################
 ## GitHub
-export GITHUB_USER='urchin-hat'
-export GITHUB_MAIL='s.fukushima1984x.xunil@gmail.com'
+export GITHUB_USER=''
+export GITHUB_MAIL=''
 if [ -z $GITHUB_USER ] || [ -z $GITHUB_MAIL ]; then echo -e '\e[1;31m!!! Please input GITHUB_USER/GITHUB_MAIL !!!\e[m'; fi
 
 ## Common Config
