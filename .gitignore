@@ -5,7 +5,8 @@
 ## current directory
 !.gitignore
 !README.md
-!setup
+!install
+!uninstall
 !.bash_profile
 !.inputrc
 !.vimrc
