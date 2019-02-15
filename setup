@@ -1,67 +1,38 @@
-#!/bin/sh
+#!/bin/bash
+##################################################
+# @setup
+# @Author: urchin-hat
+# @Update: date 2019/02/15
+# @using:
+#    $ bash setup
+#    $ ./setup
+##################################################                                                                                           
+# Validation
+##################################################                                                                                           
+if !(type git > /dev/null 2>&1); then echo "\e[1;31m!!! Please install git !!!\e[m" && exit; fi
+if !(type brew > /dev/null 2>&1); then echo -e "We recommend installing Homebrew.\nhttps://brew.sh/index_ja"; fi
 
-# 1 initial setting
-if [ $# -eq 1 ]; then
-    # 1.1 show help
-    ## comannd sample -> $sh setup -h
-    if [ $1 = "-h" -o $1 = "help" ]; then
-        echo "help"
-        ## help description
-        exit 0
-	# 1.2 initial setting
-	## comannd sample -> $ sh setup -i
-    elif [$1 = "-i" ]; then
-	     ## 1.2.1 Linux initial setting
-	     if [ `uname` = "Linux" ]; then
-	         ### TODO shellscript how to sudo command
-		 #### initial (ubuntu)
-		 sudo apt install -y gcc gcc-c++ make git openssl-devel bzip2-devel zlib-devel readline-devel sqlite-devel zlib1g-dev
-
-		 ### TODO initial(redhat)
-		 #### sudo yum install -y gcc gcc-c++ make git openssl-devel bzip2-devel zlib-devel readline-devel sqlite-devel zlib1g-dev
-
-	     ## 1.2.2 Mac OS X initial setting
-	     elif [ `uname` = "Darwin" ]; then
-		 ### HomeBrew
-		 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-		 ### Update
-		 brew update
-		 ### Git
-		 brew install git
-	     fi
-	     # common initial setting
-	     ## anyenv
-	     git clone https://github.com/riywo/anyenv ~/.anyenv
-	     export PATH="$HOME/.anyenv/bin:$PATH"
-	     eval "$(anyenv init -)"
-	     ### install env's
-	     #### Python
-	     anyenv install pyenv
-	     ### node.js
-	     anyenv install ndenv
-	     ### Golang
-	     anyenv install goenv
-    fi
+##################################################                                                                                           
+# SetUp
+##################################################
+if [ ! -e `pwd`/config/my_conf ]; then echo -e "#!/bin/bash" > `pwd`/config/my_conf; fi
+if [ ! -e $HOME/.bash_profile ];then ln -sf `pwd`/.bash_profile $HOME/.bash_profile && source $HOME/.bash_profile; fi
+if [ -z $GITHUB_USER ] || [ -z $GITHUB_MAIL ]; then
+    echo -e '\e[1;31m!!! Please input GITHUB_USER/GITHUB_MAIL !!!\e[m' && exit
+else
+    git config --global user.name $GITHUB_USER
+    git config --global user.email $GITHUB_MAIL
 fi
 
-# 2 common
-## GNU Emacs
-[ ! -e $HOME/.emacs.d ] && which emacs > /dev/null && ln -sf `pwd`/common/.emacs.d/ $HOME/
-
-## vim
-[ ! -e $HOME/.vimrc ] && which vim > /dev/null 2>&1 && ln -sf  `pwd`/common/.vimrc $HOME/.vimrc
-
-# 3 OS (.bash_profile)
-## 3.1 Linux
-if [ `uname` = "Linux" ]; then
-    echo "Linux"
-    ln -sf `pwd`/linux/.bash_profile $HOME/.bash_profile
-
-## 3.2 Mac OS X
-elif [ `uname` = "Darwin" ]; then
-    echo "Mac OS X"
-    ln -sf `pwd`/mac/.bash_profile $HOME/.bash_profile
+if [ ! -e $HOME/.emacs.d ]; then
+    cp `pwd`/.emacs.d/init_file/init.el `pwd`/.emacs.d/.
+    ln -sf `pwd`/.emacs.d/ $HOME/.emacs.d
 fi
 
-# 4. reflect configuration
+if [ ! -e $HOME/.vimrc ]; then ln -sf `pwd`/.vimrc $HOME/.vimrc; fi
+if [ ! -e $HOME/.inputrc ]; then ln -sf `pwd`/.inputrc $HOME/.inputrc; fi 
+
+##################################################
+# Finaly
+##################################################                                                                                           
 exec $SHELL -l

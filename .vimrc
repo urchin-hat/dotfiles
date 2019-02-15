@@ -1,3 +1,4 @@
+set belloff=all
 set cursorline
 set cursorcolumn
 syntax on
