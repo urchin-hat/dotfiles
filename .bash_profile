@@ -27,7 +27,6 @@ if [ `uname` = 'Linux' ]; then
     GIT_PS1_SHOWDIRTYSTATE=true
 
     PS1='\[\e[1;36m\][\u@\h \W$(__git_ps1 "(\033[32m\]%s\[\033[0m\]\[\e[1;36m\])")\]]$\[\e[m\] '
-    # PS1="\[\e[1;36m\][\u@\h \W]\$\[\e[m\] "
 
 elif [ `uname` = 'Darwin' ]; then
     # 2.2 MacOSX Display name 
