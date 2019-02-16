@@ -6,6 +6,7 @@
 # @using:
 #    $ bash install
 #    $ ./install
+# *If there is .emacs.d before execution, delete it and execute it.
 ##################################################                                                                                           
 # Validation
 ##################################################                                                                                           
@@ -23,8 +24,8 @@ if [ ! -e `pwd`/config/user_info ]; then
 fi
 if [ ! -e $HOME/.my_config ]; then
     ln -sf `pwd`/config $HOME/.my_config
-    source $HOME/.my_config/user_info
 fi
+source $HOME/.my_config/user_info
 
 if [ ! -e $HOME/.bash_profile ];then ln -sf `pwd`/.bash_profile $HOME/.bash_profile && source $HOME/.bash_profile; fi
 if [ -z $GITHUB_USER ] || [ -z $GITHUB_MAIL ]; then
