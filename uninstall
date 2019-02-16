@@ -17,5 +17,6 @@ unlink $HOME/.inputrc
 
 rm `pwd`/config/my_conf
 rm `pwd`/config/user_info
+rm `pwd`/.emacs.d/init.el
 
 exec $SHELL -l
