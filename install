@@ -18,9 +18,11 @@ if !(type brew > /dev/null 2>&1); then echo -e "We recommend installing Homebrew
 ##################################################
 if [ ! -e `pwd`/config/my_conf ]; then echo -e "#!/bin/bash" > `pwd`/config/my_conf; fi
 if [ ! -e `pwd`/config/user_info ]; then
-    echo -e "#!/bin/bash" > `pwd`/config/user_info
-    echo -e "export GITHUB_USER=''" >> `pwd`/config/user_info
-    echo -e "export GITHUB_MAIL=''" >> `pwd`/config/user_info
+    echo "#!/bin/bash" > `pwd`/config/user_info
+    read -p "Input typw GitHub account name >> " github_user
+    echo "export GITHUB_USER='${github_user}'" >> `pwd`/config/user_info
+    read -p "Input typw GitHub account mail >> " github_mail
+    echo "export GITHUB_MAIL='${github_mail}'" >> `pwd`/config/user_info
 fi
 if [ ! -e $HOME/.my_config ]; then
     ln -sf `pwd`/config $HOME/.my_config
