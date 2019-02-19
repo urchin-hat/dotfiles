@@ -25,3 +25,9 @@
 !requirement/.gitkeep
 !requirement/linux_brew.txt
 !requirement/mac_brew.txt
+
+## tools
+!tools/
+!tools/backup
+!tools/requirements.txt
+!tools/settings.yaml.template
