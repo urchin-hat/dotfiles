@@ -1,7 +1,7 @@
 ##################################################
 # @.bash_profile
 # @Author: urchinhat
-# @Update: date 2019/02/15
+# @Update: date 2019/03/03
 ##################################################
 # 1. Environment variable
 ##################################################
@@ -25,9 +25,15 @@ if [ `uname` = 'Linux' ]; then
     ## Git(install apt)
     source /usr/lib/git-core/git-sh-prompt > /dev/null
     GIT_PS1_SHOWDIRTYSTATE=true
-
     PS1='\[\e[1;36m\][\u@\h \W$(__git_ps1 "(\033[32m\]%s\[\033[0m\]\[\e[1;36m\])")\]]$\[\e[m\] '
-
+    ## Distribution Name
+    if (type apt > /dev/null 2>&1); then
+	DISTRIBUTION_NAME="Debian"
+    elif (type apt > /dev/null 2>&1); then
+	DISTRIBUTION_NAME="RedHat"
+    else
+	DISTRIBUTION_NAME="ETC"
+    fi
 elif [ `uname` = 'Darwin' ]; then
     # 2.2 MacOSX Display name 
     ## Git(install homebrew)
@@ -35,6 +41,8 @@ elif [ `uname` = 'Darwin' ]; then
     source /usr/local/etc/bash_completion.d/git-completion.bash > /dev/null
     GIT_PS1_SHOWDIRTYSTATE=true
     PS1='[\u@\W$(__git_ps1 "(\033[32m\]%s\[\033[0m\])")\]]$ '
+    ## Distribution Name
+    DISTRIBUTION_NAME=`uname`
 fi
 
 ##################################################
@@ -82,7 +90,7 @@ if [ `uname` = 'Linux' ]; then
 
 ## 4.3 MacOSX package manager setting
 elif [ `uname` = 'Darwin' ]; then
-    pass
+    :
 fi
 
 ## 4.4 Common after Setting
@@ -103,10 +111,6 @@ alias jn='jupyter notebook'
 
 ## Golang
 export GOPATH=$HOME/.go
-
-## node.js
-
-## C shrp
 
 ##################################################                                                                                           
 # 98. Individual settings

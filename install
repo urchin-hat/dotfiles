@@ -2,7 +2,7 @@
 ##################################################
 # @setup
 # @Author: urchin-hat
-# @Update: date 2019/02/15
+# @Update: date 2019/03/03
 # @using:
 #    $ bash install
 #    $ ./install
@@ -18,17 +18,12 @@ if !(type brew > /dev/null 2>&1); then echo -e "We recommend installing Homebrew
 ##################################################
 if [ ! -e `pwd`/config/my_conf ]; then echo -e "#!/bin/bash" > `pwd`/config/my_conf; fi
 if [ ! -e `pwd`/config/user_info ]; then
-    echo "#!/bin/bash" > `pwd`/config/user_info
-    read -p "Input typw GitHub account name >> " github_user
-    echo "export GITHUB_USER='${github_user}'" >> `pwd`/config/user_info
-    read -p "Input typw GitHub account mail >> " github_mail
-    echo "export GITHUB_MAIL='${github_mail}'" >> `pwd`/config/user_info
+    echo "#!/bin/bash" > `pwd`/config/user_info;
+    read -p "Input typw GitHub account name >> " github_user; echo "export GITHUB_USER='${github_user}'" >> `pwd`/config/user_info
+    read -p "Input typw GitHub account mail >> " github_mail; echo "export GITHUB_MAIL='${github_mail}'" >> `pwd`/config/user_info
 fi
-if [ ! -e $HOME/.my_config ]; then
-    ln -sf `pwd`/config $HOME/.my_config
-fi
+if [ ! -e $HOME/.my_config ]; then; ln -sf `pwd`/config $HOME/.my_config; fi
 source $HOME/.my_config/user_info
-
 if [ ! -e $HOME/.bash_profile ];then ln -sf `pwd`/.bash_profile $HOME/.bash_profile && source $HOME/.bash_profile; fi
 if [ -z $GITHUB_USER ] || [ -z $GITHUB_MAIL ]; then
     echo -e '\e[1;31m!!! Please input GITHUB_USER/GITHUB_MAIL(.my_conf/user_info) !!!\e[m' && exit
@@ -36,12 +31,10 @@ else
     git config --global user.name $GITHUB_USER
     git config --global user.email $GITHUB_MAIL
 fi
-
 if [ ! -e $HOME/.emacs.d ]; then
     cp `pwd`/.emacs.d/init_file/init.el `pwd`/.emacs.d/.
     ln -sf `pwd`/.emacs.d/ $HOME/.emacs.d
 fi
-
 if [ ! -e $HOME/.vimrc ]; then ln -sf `pwd`/.vimrc $HOME/.vimrc; fi
 if [ ! -e $HOME/.inputrc ]; then ln -sf `pwd`/.inputrc $HOME/.inputrc; fi 
 
