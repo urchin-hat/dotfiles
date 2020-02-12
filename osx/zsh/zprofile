@@ -1,0 +1,10 @@
+# history
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000
+export SAVEHIST=10000
+
+# tmux
+# export PATH="/usr/local/opt/ncurses/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/ncurses/lib"
+# export CPPFLAGS="-I/usr/local/opt/ncurses/include"
+

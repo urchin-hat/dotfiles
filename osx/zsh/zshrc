@@ -1,0 +1,54 @@
+# init
+setopt IGNOREEOF
+export LANG=ja_JP.UTF-8
+export EDITOR=vim
+export PATH="/usr/local/sbin:$PATH"
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+
+# completion
+fpath=(/usr/local/share/zsh/site-functions $fpath)
+autoload -Uz colors && colors
+autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+
+source /usr/local/etc/bash_completion.d/*
+
+#PS1
+autoload -Uz vcs_info    
+setopt prompt_subst
+
+zstyle ':vcs_info:*' formats '(%F{green}%s@%b%f)'    
+zstyle ':vcs_info:*' actionformats '(%F{green}%s@%b%f(%F{red}%a%f))'    
+precmd() { vcs_info }    
+
+PROMPT='[%s%n@%c ${vcs_info_msg_0_}]$ '
+
+# eval
+eval "$(anyenv init -)"
+
+# direnv
+# eval "$(direnv hook zsh)"
+
+# google cloud
+# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+# source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+
+# alias
+alias ls='gls --color=auto'
+alias l='ls'
+alias ll='ls -l'
+alias la='ls -la'
+alias rm='rm -i'
+alias grep='grep --color=auto'
+alias find='gfind'
+alias xargs='gxargs'
+alias gs='git status'
+alias gc='git checkout'
+alias gl='git log --graph'
+alias history='history 1'
+
+# ssh
+# alias ssh='/usr/local/bin/ssh-change-profile.sh'
+
+# anyenv
+alias brew="env PATH=${PATH/\/Users\/${USER}\/.anyenv\/envs\/*env\/shims:/} brew"
