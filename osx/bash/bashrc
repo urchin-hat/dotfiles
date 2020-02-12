@@ -1,0 +1,55 @@
+#########################
+# grasys Fukushima
+#########################
+#
+# 1. init
+export DEV_NAME="grasys-mbp"
+
+source /usr/local/etc/bash_completion.d/git-prompt.sh > /dev/null
+source /usr/local/etc/bash_completion.d/git-completion.bash > /dev/null
+GIT_PS1_SHOWDIRTYSTATE=true
+PS1='[\u@\W$(__git_ps1 "(\033[32m\]%s\[\033[0m\])")\]]$ '
+# PS1="[\u@\W]\$ "
+## bash_history
+HISTSIZE=1000
+export HISTIGNORE="fg*:bg*:history*:cd*:hs*"
+## editor
+export EDITOR=vim
+eval "$(direnv hook bash)"
+
+#
+# 2. PATH
+## coreutiles
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+## findutils
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+
+## gcloud
+### The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/sfukushima/.google-cloud-sdk/path.bash.inc' ]; then . '/Users/sfukushima/.google-cloud-sdk/path.bash.inc'; fi
+### The next line enables shell command completion for gcloud.
+if [ -f '/Users/sfukushima/.google-cloud-sdk/completion.bash.inc' ]; then . '/Users/sfukushima/.google-cloud-sdk/completion.bash.inc'; fi
+
+#
+# 3. eval
+eval "$(anyenv init -)"
+
+#
+# 4. alias
+alias sbp='source ~/.bash_profile'
+alias ssh='/usr/local/custom/ssh-change-profile'
+alias s2h='/usr/bin/ssh'
+alias ls='ls --color'
+alias ll='ls -lah'
+alias la='ls -a'
+alias grep='grep --color'
+alias fgrep='fgrep --color'
+alias df='df -h'
+alias vi='vim'
+alias his='history'
+alias hs='history | fgrep $1'
+alias drun='docker run -itd $1 /bin/sh'
+alias venv='virtualenv'
