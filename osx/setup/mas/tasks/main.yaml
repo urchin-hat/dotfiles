@@ -1,0 +1,10 @@
+---
+- block:
+  - name: install appstore applications
+    command: mas install "{{ item.id }}"
+    with_items: "{{ packages }}"
+    when: init == "true"
+    ignore_errors: yes
+
+  tags:
+    - mas

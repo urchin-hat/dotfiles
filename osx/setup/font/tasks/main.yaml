@@ -1,0 +1,29 @@
+---
+- block:
+  - name: check file Ricty-Regular.ttf
+    stat:
+      path: ~/Library/Fonts/Ricty-Regular.ttf
+    register: ttf
+  - name: setup ricty
+    homebrew:
+      update_homebrew: true
+      upgrade_all: yes
+    when: not ttf.stat.exists
+  - name: homebrew tap
+    homebrew_tap:
+      name: "sanemat/font"
+      state: present
+    when: not ttf.stat.exists
+  - name: homebrew install ricty
+    homebrew:
+      name: "ricty"
+      state: "present"
+    when: not ttf.stat.exists
+  - name: copy /Library/Fonts/
+    shell: cp -f /usr/local/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
+    when: not ttf.stat.exists
+  - name: fc-cache ricty
+    shell: fc-cache -vf
+    when: not ttf.stat.exists
+  tags:
+    - font

@@ -1,4 +1,4 @@
-### https://raw.github.com/github/gitignore/4bff4a2986af526650f1d329d97047dc1fa87599/Global/macOS.gitignore
+### https://raw.github.com/github/gitignore/55df35ee63aef4a6f859559af980c9fb87bee1a1/Global/macOS.gitignore
 
 # General
 .DS_Store
@@ -27,21 +27,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
-### https://raw.github.com/github/gitignore/4bff4a2986af526650f1d329d97047dc1fa87599/Global/Linux.gitignore
-
-*~
-
-# temporary files which can be created if a process still has a handle open of a deleted file
-.fuse_hidden*
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-# .nfs files are created when an open file is removed but is still being accessed
-.nfs*
-
-
+# User
+config/*

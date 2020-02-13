@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# install brew command
+if !(type "brew" > /dev/null 2>&1); then
+    echo "install brew..." && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install ansible
+fi
+
+if [ $(echo $SHELL | grep -e 'bash') ]; then
+    # bash
+    cp bash/* ../config/.
+elif [ $(echo $SHELL | grep -e 'zsh') ]; then
+    # zsh
+    cp zsh/* ../config/.
+else
+    exit 1
+fi
+
+# symlink
+for item in $(find `pwd | sed s"/osx/config/"` -type f | grep -v .gitkeep); do
+    FILE_PATH=`dirname $item`/`basename $item`
+    ln -sf $FILE_PATH $HOME/.`basename $item`
+done
+
+echo "success!!"
