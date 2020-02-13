@@ -28,4 +28,6 @@ Temporary Items
 .apdisk
 
 # User
-config/*
+/config/*
+!/config/.gitkeep
+
