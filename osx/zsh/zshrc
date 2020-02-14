@@ -26,6 +26,13 @@ PROMPT='[%s%n@%c ${vcs_info_msg_0_}]$ '
 # eval
 eval "$(anyenv init -)"
 
+# mysql
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+## findutils
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+
 # direnv
 # eval "$(direnv hook zsh)"
 
