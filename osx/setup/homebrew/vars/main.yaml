@@ -1,10 +1,7 @@
 ---
 taps:
   - wakeful/selection
-#  - homebrew/cask-versions
-#  - homebrew/cask-fonts
-#  - homebrew/core
-#
+
 packages:
   - { name: git, state: present }
   - { name: gibo, state: present }
@@ -20,3 +17,5 @@ packages:
   - { name: tree, state: present }
   - { name: jq, state: present }
   - { name: yaml2json, state: present }
+  - { name: tfenv, state: present }
+  - { name: packer, state: present}

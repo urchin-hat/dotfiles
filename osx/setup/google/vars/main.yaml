@@ -1,0 +1,5 @@
+---
+packages:
+  - { name: google-chrome, state: present }
+  - { name: google-chat, state: present }
+  - { name: google-cloud-sdk, state: present }
