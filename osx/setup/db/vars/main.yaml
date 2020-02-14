@@ -4,4 +4,4 @@ packages:
   - { name: redis, state: present }
 
 cask_packages:
-  - { name:homebrew/cask-versions/sequel-pro-nightly, state: present }
+  - { name: homebrew/cask-versions/sequel-pro-nightly, state: present }

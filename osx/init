@@ -24,7 +24,7 @@ fi
 # symlink
 echo "create symlink..."
 for item in $(find `pwd | sed s"/osx/config/"` -type f | grep -v .gitkeep); do
-    if [ ! -e $HOME/.`basename` ]; then
+    if [ ! -e $HOME/.`basename $item` ]; then
         FILE_PATH=`dirname $item`/`basename $item`
         echo "ln -sf $FILE_PATH $HOME/.`basename $item`" && ln -sf $FILE_PATH $HOME/.`basename $item`
     else
@@ -35,8 +35,8 @@ done
 
 # original command
 echo "copy original command..."
-[ ! -d /usr/local/custom ] && echo "mkdir -p /usr/local/custom" && mkdir /usr/local/custom
-[ ! -f /usr/local/custom/ssh-change-profile ] && echo "cp ./common/iterm2/ssh-change-profile /usr/local/custom/." && cp ./common/iterm2/ssh-change-profile /usr/local/custom/.
+[ ! -d /usr/local/custom ] && echo "mkdir -p /usr/local/custom" && sudo mkdir /usr/local/custom
+[ ! -f /usr/local/custom/ssh-change-profile ] && echo "cp ./common/iterm2/ssh-change-profile /usr/local/custom/." && sudo cp ./common/iterm2/ssh-change-profile /usr/local/custom/.
 
 
 echo "success!!"
