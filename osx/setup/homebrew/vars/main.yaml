@@ -1,0 +1,21 @@
+---
+taps:
+  - wakeful/selection
+
+packages:
+  - { name: git, state: present }
+  - { name: gibo, state: present }
+  - { name: coreutils, state: present }
+  - { name: diffutils, state: present }
+  - { name: ed, state: present }
+  - { name: findutils, state: present }
+  - { name: gawk, state: present }
+  - { name: gnu-sed, state: present }
+  - { name: gnu-tar, state: present }
+  - { name: grep, state: present }
+  - { name: gzip, state: present }
+  - { name: tree, state: present }
+  - { name: jq, state: present }
+  - { name: yaml2json, state: present }
+  - { name: tfenv, state: present }
+  - { name: packer, state: present}

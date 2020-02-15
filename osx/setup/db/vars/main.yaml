@@ -1,0 +1,7 @@
+---
+packages:
+  - { name: mysql@5.7, state: present }
+  - { name: redis, state: present }
+
+cask_packages:
+  - { name: homebrew/cask-versions/sequel-pro-nightly, state: present }

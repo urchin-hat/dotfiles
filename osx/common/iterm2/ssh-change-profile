@@ -1,0 +1,10 @@
+#!/bin/bash
+# set profile
+echo -ne "\033]1337;SetProfile=$@\a"
+# tab name
+echo -ne "\033]0;$1\007"
+# ssh login
+/usr/bin/ssh "$@"
+# set profile(default)
+echo -ne "\033]1337;SetProfile=grasys\a"
+echo -ne "\033]0;localhost\007"

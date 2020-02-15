@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# install brew command
+if !(type "brew" > /dev/null 2>&1); then
+    echo "install brew..." && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install ansible
+fi
+
+# copy dot shell profile
+if [ $(echo $SHELL | grep -e 'bash') ]; then
+    # bash
+    [ -z "`ls ../config`" ] && echo "copy profile..." && echo "cp bash/* ../config/." && cp bash/* ../config/.
+elif [ $(echo $SHELL | grep -e 'zsh') ]; then
+    # zsh
+    [ -z "`ls ../config`" ] && echo "copy profile..." && echo "cp zsh/* ../config/." && cp zsh/* ../config/.
+else
+    exit 1
+fi
+
+# copy dot common profile
+[ ! -f ../config/vimrc ] && echo "cp common/vim/vimrc ../config/." && cp common/vim/vimrc ../config/.
+[ ! -f ../config/inputrc ] && echo "cp common/config/* ../config/." && cp common/config/* ../config/.
+
+# symlink
+echo "create symlink..."
+for item in $(find `pwd | sed s"/osx/config/"` -type f | grep -v .gitkeep); do
+    if [ ! -e $HOME/.`basename $item` ]; then
+        FILE_PATH=`dirname $item`/`basename $item`
+        echo "ln -sf $FILE_PATH $HOME/.`basename $item`" && ln -sf $FILE_PATH $HOME/.`basename $item`
+    else
+        echo "Please unlink"
+        echo "unlink $HOME/.`basename $item`"
+    fi
+done
+
+# original command
+echo "copy original command..."
+[ ! -d /usr/local/custom ] && echo "mkdir -p /usr/local/custom" && sudo mkdir /usr/local/custom
+[ ! -f /usr/local/custom/ssh-change-profile ] && echo "cp ./common/iterm2/ssh-change-profile /usr/local/custom/." && sudo cp ./common/iterm2/ssh-change-profile /usr/local/custom/.
+
+
+echo "success!!"
+exit 0

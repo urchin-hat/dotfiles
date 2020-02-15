@@ -1,0 +1,18 @@
+path=(
+    /usr/local/opt/coreutils/libexec/gnubin(N-/)
+    /usr/local/opt/ed/libexec/gnubin(N-/)
+    /usr/local/opt/findutils/libexec/gnubin(N-/)
+    /usr/local/opt/gnu-sed/libexec/gnubin(N-/)
+    /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
+    /usr/local/opt/grep/libexec/gnubin(N-/)
+    ${path}
+)
+manpath=(
+    /usr/local/opt/coreutils/libexec/gnuman(N-/)
+    /usr/local/opt/ed/libexec/gnuman(N-/)
+    /usr/local/opt/findutils/libexec/gnuman(N-/)
+    /usr/local/opt/gnu-sed/libexec/gnuman(N-/)
+    /usr/local/opt/gnu-tar/libexec/gnuman(N-/)
+    /usr/local/opt/grep/libexec/gnuman(N-/)
+    ${manpath}
+)

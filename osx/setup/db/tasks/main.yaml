@@ -1,0 +1,21 @@
+---
+- block:
+  - name: homebrew mysql/core install
+    homebrew:
+      name: "{{ item.name }}"
+      state: "{{ item.state }}"
+    with_items: "{{ packages }}"
+  - name: homebrew cask mysql/tool install
+    environment:
+      HOMEBREW_CASK_OPTS: --appdir=/Applications
+    homebrew_cask:
+      name: "{{ item.name }}"
+      state: "{{ item.state }}"
+    with_items: "{{ cask_packages }}"
+  - name: services mysql57
+    shell: brew services start mysql@5.7
+  - name: services redis 
+    shell: brew services start redis
+
+    tags:
+    - db
