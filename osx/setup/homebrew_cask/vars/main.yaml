@@ -3,7 +3,6 @@ packages:
   - { name: iterm2, state: present }
   - { name: jetbrains-toolbox, state: present }
   - { name: docker, state: present }
-  - { name: visual-studio-code, state: present }
   - { name: vagrant, state: present }
   - { name: virtualbox, state: present }
 
