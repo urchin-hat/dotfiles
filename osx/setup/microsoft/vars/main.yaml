@@ -1,0 +1,7 @@
+---
+packages:
+  - { name: azure-cli, state: present }
+ 
+cask_packages:
+  - { name: visual-studio-code, state: present }
+  - { name: dotnet-sdk, state: present }
