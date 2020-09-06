@@ -1,0 +1,42 @@
+#########################
+# WSL Fukushima
+#########################
+#
+# 1. init
+## source .bashrc
+if [[ -f ~/.bashrc ]] ; then
+        . ~/.bashrc
+fi
+
+## bash_history
+HISTSIZE=1000
+export HISTIGNORE="fg*:bg*:history*:cd*:hs*"
+## editor
+export EDITOR=vim
+
+# 2. config
+## alias
+alias sbp='source ~/.bash_profile'  
+alias ls='ls --color'
+alias ll='ls -lah'
+alias la='ls -a'
+alias grep='grep --color'
+alias fgrep='fgrep --color'
+alias df='df -h'
+alias vi='vim'
+alias his='history'
+alias hs='history | fgrep $1'
+alias cl='clear'
+alias ga='git add'
+alias gm='git commit'
+alias gc='git checkout'
+alias gp='git pull'
+alias gb='git branch'
+alias d='docker'
+alias k='kubectl'
+alias venv='virtualenv'
+alias rck='sudo hwclock -s'
+
+## windows component
+alias dotnet='/mnt/c/Program\ Files/dotnet/dotnet.exe'
+alias pwsh='/mnt/c/Program\ Files/PowerShell/7/pwsh.exe'

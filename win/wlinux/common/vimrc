@@ -1,0 +1,18 @@
+source /etc/vim/vimrc
+syntax on
+set background=dark
+set visualbell
+set noerrorbells
+set belloff=all
+set cursorline
+set cursorcolumn
+set title
+set ambiwidth=double
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set smartindent
+set cursorline
+set cursorcolumn
+set number
+
