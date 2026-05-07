@@ -1,0 +1,44 @@
+# 改行を入れない（コンパクトにしたい場合）
+add_newline = false
+
+# 全体のフォーマット順序
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$rust\
+$golang\
+$line_break\
+$character"""
+
+# ユーザー名の表示（リモート接続時のみ表示される設定）
+[username]
+show_always = false
+style_user = "bold green"
+
+# ディレクトリの設定
+[directory]
+style = "bold cyan"
+truncation_length = 3
+#fish_style_pwd_dir_length = 1 # 長いパスを '~/p/m/my-project' のように短縮
+
+# Gitブランチ
+[git_branch]
+symbol = " "
+style = "bold purple"
+
+# キャラクター（入力待ち記号）
+[character]
+success_symbol = "[>>](bold green) "
+error_symbol = "[×](bold red) "
+
+# 各言語のバージョン表示（その言語のファイルがある時だけ出る）
+[python]
+symbol = "🐍 "
+[rust]
+symbol = "🦀 "
+[golang]
+symbol = "🐹 "

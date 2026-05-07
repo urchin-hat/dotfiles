@@ -1,0 +1,45 @@
+# ==========================================
+# 1. システム共通設定の読み込み (Global Definitions)
+# ==========================================
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# ==========================================
+# 2. 環境変数の設定 (Environment Variables)
+# ==========================================
+# ユーザー用バイナリパスの追加 (二重登録防止付き)
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
+# エディタ設定 (sudoedit等で使用)
+export EDITOR="code --wait"
+
+# ==========================================
+# 3. 個別設定ファイルの読み込み (Modular Configs)
+# ==========================================
+# ~/.bashrc.d/ 内のファイルを自動で読み込む
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        [ -f "$rc" ] && . "$rc"
+    done
+fi
+unset rc
+
+# ==========================================
+# 4. ユーザーカスタム (Aliases and Functions)
+# ==========================================
+
+# --- エイリアス ---
+alias ll='ls -alF --color=auto'
+alias grep='grep --color=auto'
+alias vim='nvim'
+
+# --- プロンプト (PS1) ---
+if command -v starship > /dev/null 2>&1; then
+    eval "$(starship init bash)"
+else
+    PS1='[\u@\h \W]\$ '
+fi
