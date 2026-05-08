@@ -15,7 +15,10 @@ fi
 export PATH
 
 # エディタ設定 (sudoedit等で使用)
-export EDITOR="code --wait"
+export EDITOR="nvim"
+export PATH="$HOME/.asdf/shims:$PATH"
+
+
 
 # ==========================================
 # 3. 個別設定ファイルの読み込み (Modular Configs)
@@ -35,7 +38,26 @@ unset rc
 # --- エイリアス ---
 alias ll='ls -alF --color=auto'
 alias grep='grep --color=auto'
-alias vim='nvim'
+alias vim=$(which nvim)
+alias ls=$(which lsd)
+alias ll='ls -lah'
+alias la='ls -a'
+alias cat=$(which bat)
+alias pcat='/bin/cat'
+alias ncat='/bin/cat -n'
+# alias tree='tre'
+alias his='history'
+alias hs='history | fgrep $1'
+alias d='docker'
+alias dc='docker container'
+alias drun='docker run -itd $1 /bin/sh'
+alias gb='git branch'
+alias gc='git checkout'
+alias gf='git fetch'
+alias gcb='git checkout -b'
+alias gco='git commit'
+alias gre='git rebase'
+alias gip='curl inet-ip.info'
 
 # --- プロンプト (PS1) ---
 if command -v starship > /dev/null 2>&1; then
