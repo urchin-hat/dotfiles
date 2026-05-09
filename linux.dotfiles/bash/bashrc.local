@@ -48,6 +48,7 @@ alias la='ls -a'
 alias cat=$(which bat)
 alias pcat='/bin/cat'
 alias ncat='/bin/cat -n'
+alias gemini='gemini ; exec $SHELL'
 alias his='history'
 alias hs='history | fgrep $1'
 alias d='docker'
