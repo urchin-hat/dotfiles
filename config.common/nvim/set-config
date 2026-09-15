@@ -1,6 +1,0 @@
-#!/bin/bash
-ln -sf `pwd` ~/.config/.
-
-exit 0
-
-

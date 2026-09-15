@@ -1,0 +1,10 @@
+{{- $profiles := list "personal" "work" "server" "minimal" -}}
+{{- $profile := promptChoiceOnce . "profile" "Machine profile" $profiles "personal" -}}
+
+[data]
+    profile = {{ $profile | quote }}
+
+[git]
+    autoAdd = false
+    autoCommit = false
+    autoPush = false
