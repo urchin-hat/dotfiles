@@ -1,1 +1,14 @@
+# OS and editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Local-only files
+.env
+.env.*
+!.env.example
+
+# Generated application state
 lazy-lock.json

@@ -1,6 +1,0 @@
-#!/bin/bash
-ln -sf `pwd`/starship.toml ~/.config/.
-
-exit 0
-
-

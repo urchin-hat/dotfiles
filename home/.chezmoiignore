@@ -1,0 +1,16 @@
+{{- if ne .chezmoi.os "darwin" }}
+Library/**
+{{- end }}
+
+{{- if ne .chezmoi.os "windows" }}
+Documents/PowerShell/**
+AppData/**
+{{- end }}
+
+{{- if eq .profile "minimal" }}
+.config/nvim/**
+{{- end }}
+
+{{- if or (eq .profile "server") (eq .profile "minimal") }}
+.config/ghostty/**
+{{- end }}
